@@ -1,0 +1,14 @@
+body{
+    background-color: rgb(88, 56, 121);
+    margin: 0;
+    padding: 0;
+}
+.cardContent{
+    display: grid;
+}
+.container{
+    display: grid !important;
+}
+.choose{
+    display: contents !important;
+}

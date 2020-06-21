@@ -1,26 +1,40 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+import React, { useState } from "react";
+import Appbar from "./components/Appbar/Appbar";
+import Addoptions from "./components/Addoptions/Addoptions";
+import Optionlist from "./components/Optionlist/Optionlist";
+import Choice from "./components/Choice/Choice";
+import { Card, CardContent, Grid } from "@material-ui/core";
+import style from "./App.module.css";
+const App = () => {
+    const [options, setOptions] = useState([]);
+    const add = (newOption) => {
+        setOptions(
+            options.concat(newOption)
+        )
+    };
+    const removeAll = () => {
+        setOptions(
+            []
+        )
+    };
+    const choose = () =>{
+        return Math.floor(Math.random()*options.length);
+    }
+    return (
+        <React.Fragment>
+            <Appbar />
+            <Grid container justify="center" direction="column" alignItems="center" className={style.container}>
+                <Grid item className={style.choose}><Choice choose={choose} options={options}/></Grid>
+                <Grid item component={Card} className={style.card}>
+                    <CardContent className={style.cardContent}>
+                        <Optionlist options={options} remove={removeAll} />
+                        <Addoptions add={add} />
+                    </CardContent>
+                </Grid>
+            </Grid>
+        </React.Fragment>
+    );
+};
 
 export default App;
+

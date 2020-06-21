@@ -1,0 +1,9 @@
+.form{
+    display: flex !important;
+    align-items: center !important;
+    margin-top: 1rem !important;
+}
+.textField{
+    margin-right: 1rem !important;
+    width: 15rem !important;
+}
