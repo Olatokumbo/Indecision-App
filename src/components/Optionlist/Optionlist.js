@@ -1,15 +1,16 @@
 import React from "react";
 import styles from "./Optionlist.module.css";
+import { connect } from "react-redux";
+import * as actionCreator from "../../store/actions";
 import {Typography, Button, List, ListItem} from "@material-ui/core";
-const Optionlist = ({options, remove}) =>{
-    let id = 0
+const Optionlist = ({list, removeAll}) =>{
     return(
         <React.Fragment>
-        <Button variant="contained" color="secondary" onClick={remove} size="large" disabled={!options.length}>Remove All</Button>
+        <Button variant="contained" color="secondary" onClick={removeAll} size="large" disabled={!list.length}>Remove All</Button>
         <div className={styles.lists}>
-       {(options.length===0)?<Typography color="textSecondary" variant="h6">No Items on the List</Typography>:
-        (options.map((data)=><List key={id++}>
-            <ListItem divider><Typography color="textSecondary" variant="h6">{data}</Typography></ListItem>
+       {(list.length===0)?<Typography color="textSecondary" variant="h6">No Items on the List</Typography>:
+        (list.map((data)=><List key={data.id}>
+            <ListItem divider><Typography color="textSecondary" variant="h6">{data.value}</Typography></ListItem>
             </List>
             ))
         }
@@ -17,5 +18,15 @@ const Optionlist = ({options, remove}) =>{
         </React.Fragment>
     )
 };
+const mapStateToProps = (state) =>{
+    return{
+        list: state.list
+    }
+}
 
-export default Optionlist;
+const mapDispatchToprops = (dispatch) =>{
+    return{
+        removeAll: () => dispatch(actionCreator.removeAll())
+    }
+}
+export default connect(mapStateToProps, mapDispatchToprops)(Optionlist);
