@@ -1,7 +1,7 @@
 import * as firebase from "firebase";
 // Your web app's Firebase configuration
 const firebaseConfig = {
-    apiKey: "AIzaSyBwh_1Jf--tQNsTWiUOnFWFoTXukZXNRCY",
+    apiKey: process.env.REACT_APP_API_KEY,
     authDomain: "basic-df3c6.firebaseapp.com",
     databaseURL: "https://basic-df3c6.firebaseio.com",
     projectId: "basic-df3c6",
@@ -12,7 +12,7 @@ const firebaseConfig = {
 };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
-// const database = firebase.database();
+export const database = firebase.database();
 
 // Sets the database
 // database.ref().set({

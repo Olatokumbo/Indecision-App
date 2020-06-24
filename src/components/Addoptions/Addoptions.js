@@ -9,7 +9,7 @@ const Addoptions = ({addToStore}) => {
         let option = e.target.elements.option.value;
         if (option)
         //Add data to redux store
-        addToStore(Math.random(), option);
+        addToStore(option);
         e.target.elements.option.value = "";
     }
     return (
@@ -25,7 +25,7 @@ const Addoptions = ({addToStore}) => {
 
 const mapDispatchToProps = (dispatch) => {
     return{
-        addToStore: (id, value) => dispatch(actionCreator.add(id, value))
+        addToStore: (value) => dispatch(actionCreator.add(value))
     }
 }
 export default connect(null, mapDispatchToProps)(Addoptions);

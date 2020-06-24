@@ -2,5 +2,6 @@ export {
     add,
     remove,
     removeAll,
-    choice
+    choice,
+    fetchData
 } from "./list"

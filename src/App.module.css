@@ -8,6 +8,7 @@ body{
 }
 .container{
     display: grid !important;
+    margin-bottom: 5rem !important;
 }
 .choose{
     display: contents !important;

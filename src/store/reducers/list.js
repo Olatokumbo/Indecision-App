@@ -7,11 +7,9 @@ const initialState = {
 
 const listReducer = (state = initialState, action) =>{
     switch(action.type){
-        
-        case actionTypes.ADD:
+        case actionTypes.FETCH_LIST:
             return{
-                ...state,
-                list: state.list.concat({id: action.id, value: action.value})
+                list: [...action.data]
             }
         case actionTypes.REMOVE:
             return{
